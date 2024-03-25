@@ -1,3 +1,4 @@
+//eesti sõnade massiiv
 const sonad=[
     'teostus',
     'algoritm',
@@ -29,8 +30,9 @@ const sonad=[
     'arendamine',
     'valideerimine'
 ];
+//vene sõnade massiiv
 const venesonad=[
-    "реализация",
+    "внедрение",
     "алгоритм",
     "план",
     "пользовательский интерфейс",
@@ -60,26 +62,44 @@ const venesonad=[
     "разработка",
     "валидирование"
 ];
-function randomSona(){
+// See funktsioon valib juhusliku sõna eesti keelest
+function randomSona(language){
+    const juhuslikSona = Math.floor(Math.random() * sonad.length);
+    const sona = sonad[juhuslikSona];
+    const veneSona = venesonad[juhuslikSona];
 
-    const juhuslikSona=Math.floor(Math.random()*sonad.length);
-
-    //võtame juhuslik sõna massivist
-    const sona=sonad[juhuslikSona];
-    //lisame html lehele
-    document.getElementById("random-sona").innerHTML = sona;
-    window.correct= sona;
+    if (language === 'eesti') {
+        document.getElementById("random-sona-eesti").innerHTML = sona;
+        window.correct = sona;
+    } else if (language === 'vene') {
+        document.getElementById("random-sona-vene").innerHTML = veneSona;
+        window.correct = veneSona;
+    }
 }
-// kontrollime sõna
-function checkSona(){
-    const check = document.getElementById("kontroll").value.trim().toLowerCase();
+// See funktsioon kontrollitakse kas sõna on tõlkitud õigesti
+function checkSona(language){
+    const check = document.getElementById("kontroll-" + language).value.trim().toLowerCase();
     const correct = window.correct.toLowerCase();
-    //sõna, mille isik kirjutas, teisendatakse väiketähtedeks ja kontrollitakse edasi
-    const correctVene = venesonad[sonad.indexOf(correct)].toLowerCase();
 
-    if (check === correct || check === correctVene) {
-        document.getElementById("vastus").innerText = "Õige!";
-    } else {
-        document.getElementById("vastus").innerText = "Vale!";
+    if (language === 'eesti') {
+        // Kontrollitakse kas kasutaja sisestatud vastus vastab õigele venekeelsele sõnale
+        const correctVene = venesonad[sonad.indexOf(correct)].toLowerCase();
+        if (check === correctVene) {
+            // Kui vastus on õige, siis kuvatakse "Õige!"
+            document.getElementById("vastus-eesti").innerText = "Õige!";
+        } else {
+            // Kui vastus on vale, siis kuvatakse "Vale!"
+            document.getElementById("vastus-eesti").innerText = "Vale!";
+        }
+    } else if (language === 'vene') {
+        // Kontrollitakse kas kasutaja sisestatud vastus vastab õigele eestikeelsele sõnale
+        const correctEesti = sonad[venesonad.indexOf(correct)].toLowerCase();
+        if (check === correctEesti) {
+            // Kui vastus on õige, siis kuvatakse "Правильно!"
+            document.getElementById("vastus-vene").innerText = "Правильно!";
+        } else {
+            // Kui vastus on vale, siis kuvatakse "Неправильно!"
+            document.getElementById("vastus-vene").innerText = "Неправильно!";
+        }
     }
 }

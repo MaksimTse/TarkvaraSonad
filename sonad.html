@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="et">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Tarkvara sõnad</title>
     <script src="sonadScript.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -10,13 +10,25 @@
 <header>
     <h1>Tarkvara sõnad</h1>
 </header>
-<input type="button" value="juhuslik sõna" onclick="randomSona()">
-<div id="random-sona"></div>
-<label for="kontroll">Kirjuta sõna vene keeles</label>
-<input type="text" id="kontroll" onchange="checkSona()">
-<div id="vastus">
-
-</div>
-
+<table>
+    <tr>
+        <td>
+            <h2>Eesti -> Vene</h2>
+            <input type="button" value="juhuslik sõna" onclick="randomSona('eesti')">
+            <div id="random-sona-eesti"></div>
+            <label for="kontroll-eesti">Kirjuta sõna vene keeles</label>
+            <input type="text" id="kontroll-eesti" onchange="checkSona('eesti')">
+            <div id="vastus-eesti"></div>
+        </td>
+        <td>
+            <h2>Vene -> Eesti</h2>
+            <input type="button" value="случайное слово" onclick="randomSona('vene')">
+            <div id="random-sona-vene"></div>
+            <label for="kontroll-vene">Напишите слово на эстонском</label>
+            <input type="text" id="kontroll-vene" onchange="checkSona('vene')">
+            <div id="vastus-vene"></div>
+        </td>
+    </tr>
+</table>
 </body>
 </html>
