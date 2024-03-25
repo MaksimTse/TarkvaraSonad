@@ -76,6 +76,7 @@ function checkSona(){
     const correct = window.correct.toLowerCase();
     //sõna, mille isik kirjutas, teisendatakse väiketähtedeks ja kontrollitakse edasi
     const correctVene = venesonad[sonad.indexOf(correct)].toLowerCase();
+    
 
     if (check === correct || check === correctVene) {
         document.getElementById("vastus").innerText = "Õige!";
