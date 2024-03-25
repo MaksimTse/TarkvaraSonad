@@ -70,9 +70,11 @@ function randomSona(){
     document.getElementById("random-sona").innerHTML = sona;
     window.correct= sona;
 }
+// kontrollime sõna
 function checkSona(){
     const check = document.getElementById("kontroll").value.trim().toLowerCase();
     const correct = window.correct.toLowerCase();
+    //sõna, mille isik kirjutas, teisendatakse väiketähtedeks ja kontrollitakse edasi
     const correctVene = venesonad[sonad.indexOf(correct)].toLowerCase();
 
     if (check === correct || check === correctVene) {
