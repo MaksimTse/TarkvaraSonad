@@ -1,3 +1,5 @@
+
+//sõnad eesti keeles
 const sonad=[
     'teostus',
     'algoritm',
@@ -29,6 +31,8 @@ const sonad=[
     'arendamine',
     'valideerimine'
 ];
+
+//sõnad vene keeles
 const venesonad=[
     "реализация",
     "алгоритм",
@@ -60,6 +64,7 @@ const venesonad=[
     "разработка",
     "валидирование"
 ];
+//juhuslik sõna funktsioon
 function randomSona(){
 
     const juhuslikSona=Math.floor(Math.random()*sonad.length);
@@ -76,7 +81,7 @@ function checkSona(){
     const correct = window.correct.toLowerCase();
     //sõna, mille isik kirjutas, teisendatakse väiketähtedeks ja kontrollitakse edasi
     const correctVene = venesonad[sonad.indexOf(correct)].toLowerCase();
-
+    //kui õigesti kuvab õigesti ja vastupidi
     if (check === correct || check === correctVene) {
         document.getElementById("vastus").innerText = "Õige!";
     } else {
